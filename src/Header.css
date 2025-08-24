@@ -1,0 +1,20 @@
+.app-header {
+  background-color: #383838; 
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.app-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.user-icon {
+  cursor: pointer;
+}
