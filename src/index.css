@@ -19,3 +19,49 @@ body {
   background-color: #fdf3d9;
   color: var(--dark-text);
 }
+
+.farmer-detail-page, .agreement-page {
+  position: relative;
+}
+
+/* style for the new floating back button */
+.floating-back-btn {
+    position: absolute;
+    top: -1rem; /* Use a negative value to move it up */
+    left: 1.5rem;
+    z-index: 10;
+
+    /* Make it a transparent container */
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    /* This will be the arrow's color */
+    color: #333;
+}
+
+/* This container centers the spinner on the page */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* This is the actual spinner */
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light grey circle */
+  border-top: 8px solid var(--primary-color, #006400); /* Use your app's primary color */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* This is the animation that makes it spin */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

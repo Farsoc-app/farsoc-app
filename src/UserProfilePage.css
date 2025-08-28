@@ -1,0 +1,78 @@
+.profile-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.user-details-form {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #f1f1f1; /* Grey out the fields to show they aren't editable yet */
+  cursor: not-allowed;
+}
+
+.profile-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* This makes the Logout button red and outlined */
+.logout-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #d32f2f; /* Red border */
+  color: #d32f2f; /* Red text */
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #8D5B2D; /* Main brown color */
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #7a4f27; /* A slightly darker brown for hover */
+}

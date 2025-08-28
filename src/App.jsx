@@ -1,14 +1,34 @@
 import './App.css'
-import React, { useState } from 'react';
-import BuyerProfile from './BuyerProfile';
+import React, { useState, useEffect } from 'react';
+import { account } from './appwrite';
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+import FarmerSignupPage from './FarmerSignupPage';
 import FarmerList from './FarmerList';
 import FarmerDetail from './FarmerDetail';
 import Header from './Header';
+import UserProfilePage from './UserProfilePage';
+import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
+import AgreementForm from './AgreementForm'; 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('welcome');
-
-  const [selectedFarmerId, setSelectedFarmerId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  // REPLACE your old useEffect with this one
+  // In App.jsx, REPLACE your old useEffect with this
+  useEffect(() => {
+    const checkUserSession = async () => {
+      try {
+        await account.get();
+        setIsAuth(true); // <-- If account.get() works, set isAuth to true
+      } catch (error) {
+        setIsAuth(false); // <-- If it fails, set isAuth to false
+        console.log('No active session found.');
+      }
+      setIsLoading(false);
+    };
+    checkUserSession();
+  }, []);
 
   const farmers = [
     {
@@ -27,10 +47,10 @@ function App() {
         fruits: [
           { name: 'Assam Lemon', price: 5, unit: 'piece' },
         ],
-        dairy: [ 
+        dairy: [
           { name: 'Fresh Paneer', price: 400 },
           { name: 'Cow Ghee', price: 650 },
-        ], 
+        ],
 
         grains: [
           { name: 'Basmati Rice', price: 90 },
@@ -96,63 +116,54 @@ function App() {
     }
   ];
 
-  if (currentPage === 'farmer') {
-    return <FarmerDashboard />;
-  }
-  if (currentPage === 'farmerList') {
+  if (isLoading) {
     return (
-      <FarmerList
-        farmers={farmers}
-        setCurrentPage={setCurrentPage}
-        setSelectedFarmerId={setSelectedFarmerId}
-      />
-    );
-  }
-  if (currentPage === 'farmerDetail') {
-    return (
-      <FarmerDetail
-        farmers={farmers}
-        selectedFarmerId={selectedFarmerId}
-        setCurrentPage={setCurrentPage}
-      />
-    );
-  }
-  if (currentPage === 'society') {
-    return (
-      <div className="page-center">
-        <BuyerProfile setCurrentPage={setCurrentPage} />
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
       </div>
     );
   }
+
   return (
-    <div className="welcome-container">
-      <div className="logo-container">
-        <span className="logo-emoji">🌾</span>
-      </div>
-      <h1 className="brand-name">Farsoc</h1>
-      <p className="tagline">
-        Connecting farmers directly with housing societies for fresh, bulk produce.
-      </p>
+    <Routes>
+      {/* --- Public Routes --- */}
+      <Route path="/" element={!isAuth ? (
+        <div className="welcome-container">
+          <div className="logo-container">
+            <span className="logo-emoji"></span>
+          </div>
+          <h1 className="brand-name">Farsoc</h1>
+          <p className="tagline">
+            Connecting farmers directly with housing societies for fresh, bulk produce.
+          </p>
+          <div className="role-selection">
+            <Link to="/signup/farmer" className="role-button farmer-btn">
+              <span className="role-icon"></span>
+              <span className="role-title">I am a Farmer</span>
+              <span className="role-subtitle">Sell your produce directly</span>
+            </Link>
+            <Link to="/login" className="role-button society-btn">
+              <span className="role-icon"></span>
+              <span className="role-title">I am a Buyer/Society</span>
+              <span className="role-subtitle highlighted">Source fresh produce in bulk</span>
+            </Link>
+          </div>
+          <p className="footer-text">
+            Join thousands of farmers and societies building sustainable food networks.
+          </p>
+        </div>
+      ) : <Navigate to="/farmers" />} />
 
-      <div className="role-selection">
-        <button className="role-button farmer-btn" onClick={() => setCurrentPage('farmer')}>
-          <span className="role-icon">🧑‍🌾</span>
-          <span className="role-title">I am a Farmer</span>
-          <span className="role-subtitle">Sell your produce directly</span>
-        </button>
+      <Route path="/login" element={!isAuth ? <LoginPage /> : <Navigate to="/farmers" />} />
+      <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/farmers" />} />
 
-        <button className="role-button society-btn" onClick={() => setCurrentPage('society')}>
-          <span className="role-icon">🏢</span>
-          <span className="role-title">I am a Buyer/Society</span>
-          <span className="role-subtitle highlighted">Source fresh produce in bulk</span>
-        </button>
-      </div>
-
-      <p className="footer-text">
-        Join thousands of farmers and societies building sustainable food networks.
-      </p>
-    </div>
-  )
+      <Route path="/farmers" element={isAuth ? <FarmerList farmers={farmers} /> : <Navigate to="/login" />} />
+      <Route path="/farmers/:farmerId" element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/login" />} />
+      <Route path="/profile" element={isAuth ? <UserProfilePage /> : <Navigate to="/login" />} />
+      <Route path="/farmers/:farmerId/agreement" element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/login" />} />
+      <Route path="/signup/farmer" element={!isAuth ? <FarmerSignupPage /> : <Navigate to="/farmers" />} />
+    </Routes>
+  );
 }
 
 export default App

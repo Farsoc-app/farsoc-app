@@ -1,0 +1,88 @@
+/* Main container to center the form card */
+.form-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 20px;
+  min-height: 100vh;
+}
+
+/* The white card that holds the form */
+.form-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 650px;
+}
+
+/* Header section with title and subtitle */
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h1 {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.form-header p {
+  margin: 0;
+  color: #666;
+}
+
+/* A section of the form */
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+/* Grid for placing inputs side-by-side */
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* A single label and input group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* The main submit button */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: var(--primary-green, #006400); /* Use your app's main color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* "Already have an account?" link at the bottom */
+.auth-switch-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}

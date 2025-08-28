@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './FarmerDetail.css';
+import AgreementForm from './AgreementForm';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function StarRating({ rating }) {
     const totalStars = 5;
@@ -15,26 +17,20 @@ function StarRating({ rating }) {
 }
 
 
-function FarmerDetail({ farmers, selectedFarmerId, setCurrentPage }) {
-    // Find the selected farmer from the list passed in as a prop
-    const farmer = farmers.find(f => f.id === selectedFarmerId);
+function FarmerDetail({ farmers }) {
+    const navigate = useNavigate();
+    const { farmerId } = useParams();    
+    const farmer = farmers.find(f => f.id == farmerId);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // A fallback in case the farmer isn't found
-    if (!farmer) {
-        return (
-            <div>
-                <h2>Farmer not found</h2>
-                <button onClick={() => setCurrentPage('farmerList')}>
-                    &larr; Back to list
-                </button>
-            </div>
-        );
-    }
-
-    // The main component to display farmer details
     return (
         <div className="farmer-detail-page">
+
+            <button className="floating-back-btn" onClick={() => navigate(-1)}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
 
             {/* Photo Placeholder */}
             <div className="photo-placeholder">
@@ -165,10 +161,7 @@ function FarmerDetail({ farmers, selectedFarmerId, setCurrentPage }) {
 
             {/* Find this button and ADD the onClick part */}
             <div className="propose-agreement-section">
-                <button className="back-btn-footer" onClick={() => setCurrentPage('farmerlist')}>
-                    Back
-                </button>
-                <button className="propose-btn" onClick={() => setIsModalOpen(true)}>
+                <button className="propose-btn" onClick={() => navigate(`/farmers/${farmer.id}/agreement`)}>
                     Propose Supply Agreement
                 </button>
             </div>
@@ -177,12 +170,8 @@ function FarmerDetail({ farmers, selectedFarmerId, setCurrentPage }) {
             {isModalOpen && (
                 <div className="modal-backdrop">
                     <div className="modal-content">
-                        <h2>Supply Agreement Proposal</h2>
-                        <p>This is where the agreement form will go.</p>
-                        <button
-                            className="close-btn"
-                            onClick={() => setIsModalOpen(false)}
-                        >
+                        <AgreementForm farmer={farmer} />
+                        <button className="close-btn" onClick={() => setIsModalOpen(false)}>
                             Close
                         </button>
                     </div>
