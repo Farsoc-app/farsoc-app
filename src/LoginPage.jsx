@@ -4,7 +4,6 @@ import { account } from './appwrite';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-// We will pass this function in from App.jsx later
 function LoginPage({ setCurrentPage }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -27,15 +26,13 @@ function LoginPage({ setCurrentPage }) {
             navigate('/farmers');
             window.location.reload();
         } catch (error) {
-            // This is the most important part!
             console.error("Login failed with error:", error);
-            alert("Login Failed: " + error.message); // This will show the error in a popup.
+            alert("Login Failed: " + error.message); 
         }
     };
 
     return (
         <div className="login-page-container">
-
             <div className="profile-container">
                 <div className="profile-header">
                     <h1>Welcome back!</h1>
