@@ -29,12 +29,11 @@ body {
 
 
 .logo-emoji {
-  width: 100px; /* Increased size */
-  height: 100px; /* Increased size */
+  width: 100px;
+  height: 100px; 
   margin-bottom: 10px;
-  border-radius: 50%; /* Make it circular */
-  object-fit: cover; /* Ensures the image covers the circle without stretching */
-  /* Remove 'color: var(--dark-text);' as it's not needed for PNG images */
+  border-radius: 50%; 
+  object-fit: cover;
 }
 
 .logo-container {
