@@ -10,6 +10,9 @@ import Header from './Header';
 import UserProfilePage from './UserProfilePage';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import AgreementForm from './AgreementForm'; 
+import RiceIcon from './assets/rice.svg?react';
+import FarmerIcon from './assets/farmer.svg?react';
+import SocietyIcon from './assets/society.svg?react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -130,7 +133,7 @@ function App() {
       <Route path="/" element={!isAuth ? (
         <div className="welcome-container">
           <div className="logo-container">
-            <span className="logo-emoji"></span>
+            <RiceIcon className="logo-emoji" />
           </div>
           <h1 className="brand-name">Farsoc</h1>
           <p className="tagline">
@@ -138,12 +141,12 @@ function App() {
           </p>
           <div className="role-selection">
             <Link to="/signup/farmer" className="role-button farmer-btn">
-              <span className="role-icon"></span>
+              <FarmerIcon className="role-icon" />
               <span className="role-title">I am a Farmer</span>
               <span className="role-subtitle">Sell your produce directly</span>
             </Link>
             <Link to="/login" className="role-button society-btn">
-              <span className="role-icon"></span>
+              <SocietyIcon className="role-icon" />
               <span className="role-title">I am a Buyer/Society</span>
               <span className="role-subtitle highlighted">Source fresh produce in bulk</span>
             </Link>
