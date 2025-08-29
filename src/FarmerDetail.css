@@ -1,12 +1,13 @@
 .farmer-detail-page {
-  position: relative;
-  max-width: 450px;
-  margin: 0 auto;
-  margin-top: 2rem; 
-  padding: 1.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
-  padding-bottom: 100px;
+    position: relative;
+    max-width: 450px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding-bottom: 100px;
 }
+
 .detail-header {
     display: flex;
     align-items: center;
@@ -149,18 +150,18 @@
 }
 
 .detail-item span {
-    display: block;
-    color: #333;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-    font-weight: 500;
-}
-
-.detail-item p {
     margin: 0;
     font-weight: normal;
     color: #666;
     font-size: 1rem;
+
+}
+
+.detail-item p {
+    display: block;
+    color: #333;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
 }
 
 .produce-grid {
@@ -348,7 +349,7 @@
 }
 
 .detail-item p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #222;
     margin-top: 2px;
 }
