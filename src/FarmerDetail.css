@@ -2,31 +2,27 @@
   position: relative;
   max-width: 450px;
   margin: 0 auto;
-  margin-top: 2rem; /* <-- ADD THIS LINE */
+  margin-top: 2rem; 
   padding: 1.5rem;
   font-family: system-ui, -apple-system, sans-serif;
   padding-bottom: 100px;
 }
-/* Header with back button and title */
 .detail-header {
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
     position: relative;
     padding-top: 0.1rem;
-    /* For centering the title */
 }
 
 .header-title {
     font-size: 1.25rem;
     margin: 0;
-    /* Center the title in the available space */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
-/* Placeholder for farmer photos */
 .photo-placeholder {
     width: 100%;
     height: 200px;
@@ -39,9 +35,6 @@
     margin-bottom: 1.5rem;
 }
 
-/* Section with icon, name, location, etc. */
-/* --- REPLACE YOUR OLD .info-section styles with this --- */
-
 .info-section {
     margin-bottom: 1.5rem;
 }
@@ -53,7 +46,6 @@
     margin-bottom: 1rem;
 }
 
-/* This makes the icon circular */
 .farmer-icon-large {
     background-color: #eef0f2;
     border-radius: 50%;
@@ -79,30 +71,22 @@
     color: #666;
 }
 
-/* --- This is the corrected code for the tags --- */
-
-/* This is for the container that holds the rating and farming type */
 .tag-container {
     display: flex;
     align-items: center;
-    /* This vertically aligns the text and the tag */
     gap: 0.75rem;
     margin-top: 1rem;
 }
 
-/* This styles the rating as plain golden text */
 .rating-tag {
     background-color: #ffeeb6;
-    /* Light golden */
     color: #f59e0b;
-    /* Dark golden */
     padding: 6px 12px;
     border-radius: 16px;
     font-size: 0.8rem;
     font-weight: 500;
 }
 
-/* This styles the green "Organic Farming" tag */
 .farming-type-tag {
     background-color: #e8f5e9;
     color: #2e7d32;
@@ -112,14 +96,12 @@
     font-weight: 500;
 }
 
-/* Container for Call and Text buttons */
 .action-buttons {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
 }
 
-/* Styling for each button (Call and Text) */
 .action-btn {
     flex: 1;
     background-color: #ffffff;
@@ -129,17 +111,13 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 1rem;
 
-    /* --- ADD THESE NEW LINES --- */
     display: flex;
     flex-direction: column;
-    /* This stacks the items vertically */
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    /* This adds space between the icon and text */
 }
 
-/* About section */
 .about-section h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
@@ -153,13 +131,9 @@
 
 .detail-section-card {
     background-color: #ffffff;
-    /* This is the white background */
     border-radius: 12px;
-    /* This makes the corners rounded */
     padding: 1.5rem;
-    /* This gives space inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    /* This adds a subtle shadow */
 }
 
 .detail-section h3 {
@@ -167,52 +141,36 @@
     font-size: 1.4rem;
     color: #333;
     margin-bottom: 0.5rem;
-    /* Reduced from 0.8rem to tighten the space */
 }
 
-/* Styles for the list of details */
 .details-list {
     display: grid;
     gap: 1.25rem;
-    /* Space between each item */
 }
 
-/* This is the label (e.g., "Minimum Contract:") */
 .detail-item span {
     display: block;
     color: #333;
-    /* Darker text */
     font-size: 0.9rem;
     margin-bottom: 0.25rem;
     font-weight: 500;
-    /* Bolder */
 }
 
-/* This is the value (e.g., "6 months...") */
 .detail-item p {
     margin: 0;
     font-weight: normal;
-    /* Normal weight */
     color: #666;
-    /* Lighter text */
     font-size: 1rem;
 }
 
-/* --- Add this to the end of FarmerDetail.css --- */
-
-/* Styles for the produce section grid */
 .produce-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* This creates the 2-column layout */
     gap: 1rem;
-    /* This is the space between the items */
 }
 
-/* Styles for each individual vegetable card */
 .produce-item {
     background-color: #f8f9fa;
-    /* A very light grey for the card */
     border: 1px solid #e9ecef;
     border-radius: 12px;
     padding: 1rem;
@@ -250,13 +208,11 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* --- Reviews Section Styles --- */
 
 .reviews-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* Space between review cards */
 }
 
 .review-card {
@@ -308,11 +264,6 @@
     display: block;
 }
 
-/* --- Agreement Modal Styles --- */
-
-/* --- Footer Buttons --- */
-
-/* This is the container for the two buttons */
 .-agreement-section {
     position: fixed;
     bottom: 0;
@@ -320,8 +271,6 @@
     right: 0;
     padding: 1rem;
     z-index: 100;
-
-    /* New styles to arrange buttons side-by-side */
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -339,7 +288,6 @@
     transition: background-color 0.2s;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-    /* --- Add these two lines below --- */
     width: 100%;
     box-sizing: border-box;
     margin-top: 2.5rem;
@@ -347,18 +295,15 @@
 
 .propose-btn:hover {
     background-color: #4a7c59db;
-    /* Lighter Green on hover */
 }
 
 .modal-backdrop {
     position: fixed;
-    /* Sits on top of everything */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    /* Semi-transparent black background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,14 +324,12 @@
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     background-color: #f44336;
-    /* Red */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Style for the 'no reviews' message */
 .no-reviews-message {
     text-align: center;
     color: #777;
@@ -394,46 +337,18 @@
     font-style: normal;
 }
 
-/* Add these styles for the agreement details section */
 .detail-item {
     margin-bottom: 0.8rem;
-    /* Reduces space between each line item */
 }
 
 .detail-item span {
     font-size: 0.9rem;
-    /* Smaller font for the label */
     color: #666;
     display: block;
-    /* Ensures it takes its own line */
 }
 
 .detail-item p {
     font-size: 1rem;
-    /* Slightly larger font for the value */
     color: #222;
     margin-top: 2px;
-    /* Pulls the value closer to the label above it */
-}
-
-@media (max-width: 600px) {
-    .propose-agreement-section {
-        position: fixed; 
-        bottom: 0;      
-        left: 0;         
-        right: 0;      
-        z-index: 100;   
-
-        padding: 1rem;
-        background-color: #ffdfd9; 
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1); 
-    }
-
-    .back-btn-footer,
-    .propose-btn {
-        flex-grow: 1;
-        padding: 0.9rem 0.2rem !important;
-        font-size: 1rem;
-        text-align: center;
-    }
 }
