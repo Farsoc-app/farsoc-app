@@ -14,7 +14,6 @@ function UserProfilePage() {
                 setUserData(user);
             } catch (error) {
                 console.error("Failed to fetch user data", error);
-                // If there's an error (like no session), you might want to redirect to login
             }
         };
         fetchUserData();
