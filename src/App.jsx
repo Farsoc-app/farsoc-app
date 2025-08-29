@@ -72,7 +72,7 @@ function App() {
       },
       agreementDetails: {
         minDuration: '6 months (extendable)',
-        frequency: 'Weekly (every Tuesday & Friday)',
+        frequency: 'Weekly',
         emergency: 'Available (48hr notice)',
         payment: 'Monthly billing',
         quality: 'Guaranteed Fresh: Damaged produce will be replaced upon review.',
@@ -94,7 +94,7 @@ function App() {
       },
       agreementDetails: {
         minDuration: '12 months',
-        frequency: 'Bi-weekly (every Monday)',
+        frequency: 'Weekly (every Monday)',
         emergency: 'Not available',
         payment: 'Payment on delivery',
         quality: 'Grade A produce guaranteed',
