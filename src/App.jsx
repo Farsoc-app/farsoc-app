@@ -17,15 +17,14 @@ import SocietyIcon from './assets/society.svg?react';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
-  // REPLACE your old useEffect with this one
-  // In App.jsx, REPLACE your old useEffect with this
+
   useEffect(() => {
     const checkUserSession = async () => {
       try {
         await account.get();
-        setIsAuth(true); // <-- If account.get() works, set isAuth to true
+        setIsAuth(true); 
       } catch (error) {
-        setIsAuth(false); // <-- If it fails, set isAuth to false
+        setIsAuth(false);
         console.log('No active session found.');
       }
       setIsLoading(false);
@@ -36,8 +35,8 @@ function App() {
   const farmers = [
     {
       id: 1,
-      name: 'Green Valley Farmers Group',
-      location: 'Nalbari, Assam',
+      name: 'A Farmers Group',
+      location: 'Kamrup, Assam',
       phone: '9876543210',
       rating: 4.8,
       farmingType: 'Organic Farming',
@@ -81,7 +80,7 @@ function App() {
     },
     {
       id: 2,
-      name: 'Brahmaputra Fresh Produce',
+      name: 'B Farmers Group',
       location: 'Sonitpur, Assam',
       phone: '9876543211',
       rating: 4.5,
@@ -103,14 +102,14 @@ function App() {
       reviews: [
         {
           id: 1,
-          societyName: 'Royal Towers',
+          societyName: 'Society 1',
           rating: 5,
-          comment: 'The produce is always fresh, especially the carrots. Highly recommended.',
+          comment: 'The produce is always fresh.',
           date: '12/08/2025'
         },
         {
           id: 2,
-          societyName: 'City View Apartments',
+          societyName: 'Society 2',
           rating: 4,
           comment: 'Good service and reliable delivery.',
           date: '05/07/2025'
