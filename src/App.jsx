@@ -10,7 +10,7 @@ import Header from './Header';
 import UserProfilePage from './UserProfilePage';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import AgreementForm from './AgreementForm'; 
-import RiceIcon from './assets/rice.svg?react';
+import farsocLogo from './assets/farsoc-logo.png';
 import FarmerIcon from './assets/farmer.svg?react';
 import SocietyIcon from './assets/society.svg?react';
 
@@ -132,7 +132,7 @@ function App() {
       <Route path="/" element={!isAuth ? (
         <div className="welcome-container">
           <div className="logo-container">
-            <RiceIcon className="logo-emoji" />
+            <img src={farsocLogo} alt="Farsoc company logo" className="logo-emoji" />
           </div>
           <h1 className="brand-name">Farsoc</h1>
           <p className="tagline">
