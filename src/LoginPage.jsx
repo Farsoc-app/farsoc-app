@@ -64,8 +64,7 @@ function LoginPage({ setCurrentPage }) {
                 </form>
 
                 <p className="auth-switch-text">
-                    Need an account?{' '}
-                    {/* This will switch to the signup page */}
+                    Don't have an account?{' '}
                     <Link to="/signup" className="auth-switch-link">
                         Register
                     </Link>
