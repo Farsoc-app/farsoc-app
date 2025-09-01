@@ -35,7 +35,7 @@ function LoginPage({ setCurrentPage }) {
         <div className="login-page-container">
             <div className="profile-container">
                 <div className="profile-header">
-                    <h1>Welcome back!</h1>
+                    <h1>Login to Your Account</h1>
                     <p>Sign in to access your dashboard.</p>
                 </div>
 
@@ -66,7 +66,7 @@ function LoginPage({ setCurrentPage }) {
                 <p className="auth-switch-text">
                     Don't have an account?{' '}
                     <Link to="/signup" className="auth-switch-link">
-                        Register
+                        Sign Up
                     </Link>
                 </p>
             </div>
