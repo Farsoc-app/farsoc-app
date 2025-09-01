@@ -9,10 +9,11 @@ import FarmerDetail from './FarmerDetail';
 import Header from './Header';
 import UserProfilePage from './UserProfilePage';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
-import AgreementForm from './AgreementForm'; 
+import AgreementForm from './AgreementForm';
 import farsocLogo from './assets/farsoc-logo.png';
 import FarmerIcon from './assets/farmer.svg?react';
 import SocietyIcon from './assets/society.svg?react';
+import GoogleAuthPage from './GoogleAuthPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ function App() {
     const checkUserSession = async () => {
       try {
         await account.get();
-        setIsAuth(true); 
+        setIsAuth(true);
       } catch (error) {
         setIsAuth(false);
         console.log('No active session found.');
@@ -139,12 +140,12 @@ function App() {
             Connecting farmers directly with housing societies for fresh, bulk produce.
           </p>
           <div className="role-selection">
-            <Link to="/signup/farmer" className="role-button farmer-btn">
+            <Link to="/auth?role=farmer" className="role-button farmer-btn">
               <FarmerIcon className="role-icon" />
               <span className="role-title">I am a Farmer</span>
               <span className="role-subtitle">Sell your produce directly</span>
             </Link>
-            <Link to="/login" className="role-button society-btn">
+            <Link to="/auth?role=buyer" className="role-button society-btn">
               <SocietyIcon className="role-icon" />
               <span className="role-title">I am a Buyer/Society</span>
               <span className="role-subtitle highlighted">Source fresh produce in bulk</span>
@@ -156,13 +157,18 @@ function App() {
         </div>
       ) : <Navigate to="/farmers" />} />
 
-      <Route path="/login" element={!isAuth ? <LoginPage /> : <Navigate to="/farmers" />} />
-      <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/farmers" />} />
+      <Route path="/" element={!isAuth ? <GoogleAuthPage /> : <Navigate to="/farmers" />} />
+      <Route path="/auth" element={!isAuth ? <GoogleAuthPage /> : <Navigate to="/farmers" />} />
 
-      <Route path="/farmers" element={isAuth ? <FarmerList farmers={farmers} /> : <Navigate to="/login" />} />
-      <Route path="/farmers/:farmerId" element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/login" />} />
-      <Route path="/profile" element={isAuth ? <UserProfilePage /> : <Navigate to="/login" />} />
-      <Route path="/farmers/:farmerId/agreement" element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/login" />} />
+
+      {/* <Route path="/login" element={!isAuth ? <LoginPage /> : <Navigate to="/farmers" />} /> */}
+      {/* <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/farmers" />} /> */}
+
+      <Route path="/farmers" element={isAuth ? <FarmerList farmers={farmers} /> : <Navigate to="/" />} />
+      <Route path="/farmers/:farmerId" element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/" />} />
+      <Route path="/profile" element={isAuth ? <UserProfilePage /> : <Navigate to="/" />} />
+      <Route path="/farmers/:farmerId/agreement" element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/" />} />
+
       <Route path="/signup/farmer" element={!isAuth ? <FarmerSignupPage /> : <Navigate to="/farmers" />} />
     </Routes>
   );
