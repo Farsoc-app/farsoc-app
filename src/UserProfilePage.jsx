@@ -4,6 +4,7 @@ import './UserProfilePage.css';
 import { useNavigate } from 'react-router-dom';
 
 function UserProfilePage() {
+    const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
 
@@ -14,10 +15,21 @@ function UserProfilePage() {
                 setUserData(user);
             } catch (error) {
                 console.error("Failed to fetch user data", error);
+            } finally {
+                setLoading(false);
             }
         };
         fetchUserData();
     }, []);
+
+    if (loading) {
+        return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+    }
+
     const handleLogout = async () => {
         try {
             await account.deleteSession('current');
@@ -38,7 +50,7 @@ function UserProfilePage() {
                 </div>
 
                 <div className="user-details-form">
-                    {userData ? (
+                    {userData && (
                         <>
                             <div className="form-group">
                                 <label>Name</label>
@@ -53,8 +65,6 @@ function UserProfilePage() {
                                 <input type="text" value={userData.phone} readOnly />
                             </div>
                         </>
-                    ) : (
-                        <p>Loading your details...</p>
                     )}
                 </div>
 
