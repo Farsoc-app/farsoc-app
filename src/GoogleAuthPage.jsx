@@ -31,8 +31,8 @@ function GoogleAuthPage() {
         try {
             account.createOAuth2Session(
                 'google',
-                'http://localhost:5173/home',
-                'http://localhost:5173/auth'
+                'https://farsoc.netlify.app/home',
+                'https://farsoc.netlify.app/auth'
             );
         } catch (error) {
             console.error("Failed to initiate Google login", error);
