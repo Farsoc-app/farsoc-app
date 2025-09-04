@@ -31,7 +31,7 @@ function GoogleAuthPage() {
         try {
             account.createOAuth2Session(
                 'google',
-                'https://farsoc.netlify.app/home',
+                'https://farsoc.netlify.app/farmers',
                 'https://farsoc.netlify.app/auth'
             );
         } catch (error) {
