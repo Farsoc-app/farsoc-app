@@ -14,6 +14,7 @@ import farsocLogo from './assets/farsoc-logo.png';
 import FarmerIcon from './assets/farmer.svg?react';
 import SocietyIcon from './assets/society.svg?react';
 import GoogleAuthPage from './GoogleAuthPage';
+import FarmerDashboard from './FarmerDashboard';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -164,7 +165,7 @@ function App() {
       {/* <Route path="/login" element={!isAuth ? <LoginPage /> : <Navigate to="/farmers" />} /> */}
       {/* <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/farmers" />} /> */}
 
-      <Route path="/farmers" element={isAuth ? <FarmerList farmers={farmers} /> : <Navigate to="/" />} />
+      <Route path="/farmers" element={isAuth ? <FarmerDashboard /> : <Navigate to="/" />} />
       <Route path="/farmers/:farmerId" element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/" />} />
       <Route path="/profile" element={isAuth ? <UserProfilePage /> : <Navigate to="/" />} />
       <Route path="/farmers/:farmerId/agreement" element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/" />} />
