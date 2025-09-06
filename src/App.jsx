@@ -82,7 +82,7 @@ function App() {
     {
       id: 2,
       name: 'B Farmers Group',
-      location: 'Sonitpur, Assam',
+      location: 'Kamrup, Assam',
       phone: '9876543211',
       rating: 4.5,
       farmingType: 'Chemical Farming',
