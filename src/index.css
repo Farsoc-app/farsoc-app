@@ -26,8 +26,8 @@ body {
 
 .floating-back-btn {
     position: absolute;
-    top: -1rem; 
-    left: 1.5rem;
+    top: -2rem; 
+    left: 0rem;
     z-index: 10;
     background: transparent;
     border: none;
