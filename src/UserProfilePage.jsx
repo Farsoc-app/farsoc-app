@@ -33,7 +33,7 @@ function UserProfilePage() {
     const handleLogout = async () => {
         try {
             await account.deleteSession('current');
-            navigate('/login');
+            navigate('/');
             window.location.reload();
         } catch (error) {
             console.error("Failed to log out:", error);
