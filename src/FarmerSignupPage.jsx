@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './FarmerSignupPage.css'; // We will create this file next
+import './FarmerSignupPage.css'; 
 
 function FarmerSignupPage() {
     
