@@ -3,9 +3,8 @@
     max-width: 450px;
     margin: 0 auto;
     margin-top: 2rem;
-    padding: 1.5rem;
     font-family: system-ui, -apple-system, sans-serif;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .detail-header {
