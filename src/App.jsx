@@ -18,19 +18,19 @@ import FarmerDashboard from './FarmerDashboard';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuth, setIsAuth] = useState(false);
-
+  const [user, setUser] = useState(null);
   useEffect(() => {
     const checkUserSession = async () => {
       try {
-        await account.get();
-        setIsAuth(true);
+        const currentUser = await account.get();
+        setUser(currentUser);
       } catch (error) {
-        setIsAuth(false);
-        console.log('No active session found.');
+        setUser(null);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
+
     checkUserSession();
   }, []);
 
@@ -131,7 +131,7 @@ function App() {
   return (
     <Routes>
       {/* --- Public Routes --- */}
-      <Route path="/" element={!isAuth ? (
+      <Route path="/" element={!user ? (
         <div className="welcome-container">
           <div className="logo-container">
             <img src={farsocLogo} alt="Farsoc company logo" className="logo-emoji" />
@@ -156,21 +156,30 @@ function App() {
             Join thousands of farmers and societies building sustainable food networks.
           </p>
         </div>
-      ) : <Navigate to="/farmers" />} />
+      ) : (
+        <Navigate to={user.prefs.role === 'farmer' ? '/farmers/dashboard' : (user.prefs.role === 'buyer' ? '/farmer-list' : '/')} />
+      )} />
 
-      <Route path="/" element={!isAuth ? <GoogleAuthPage /> : <Navigate to="/farmers" />} />
-      <Route path="/auth" element={!isAuth ? <GoogleAuthPage /> : <Navigate to="/farmers" />} />
+      {/* The Google Auth Page */}
+      <Route
+        path="/auth"
+        element={!user ? <GoogleAuthPage /> : <Navigate to="/" />}
+      />
 
+      {/* Farmer's Dashboard */}
+      <Route
+        path="/farmers/dashboard"
+        element={user && user.prefs.role === 'farmer' ? <FarmerDashboard user={user} /> : <Navigate to="/" />}
+      />
 
-      {/* <Route path="/login" element={!isAuth ? <LoginPage /> : <Navigate to="/farmers" />} /> */}
-      {/* <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/farmers" />} /> */}
+      {/* Buyer's Page (Farmer List) */}
+      <Route
+        path="/farmer-list"
+        element={user && user.prefs.role === 'buyer' ? <FarmerList user={user} /> : <Navigate to="/" />}
+      />
 
-      <Route path="/farmers" element={isAuth ? <FarmerDashboard /> : <Navigate to="/" />} />
-      <Route path="/farmers/:farmerId" element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/" />} />
-      <Route path="/profile" element={isAuth ? <UserProfilePage /> : <Navigate to="/" />} />
-      <Route path="/farmers/:farmerId/agreement" element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/" />} />
-
-      <Route path="/signup/farmer" element={!isAuth ? <FarmerSignupPage /> : <Navigate to="/farmers" />} />
+      {/* Fallback for any other URL - redirects to home */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
