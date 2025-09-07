@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom'; // <-- ADD THIS IMPORT
+import { useLocation } from 'react-router-dom';
 import { account } from './appwrite';
 import './GoogleAuthPage.css';
 
-// SVG component for the Google Icon (no changes here)
 const GoogleIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
         <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
@@ -14,24 +13,43 @@ const GoogleIcon = () => (
 );
 
 function GoogleAuthPage() {
-    // ---- START OF NEW LOGIC ----
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const role = params.get('role'); // This will be 'farmer', 'buyer', or null
 
-    let subtitle = "Please continue to get started."; // Default text
+    let subtitle = "Please continue to get started.";
     if (role === 'farmer') {
         subtitle = "Please continue to connect with societies.";
     } else if (role === 'buyer') {
         subtitle = "Please continue to connect with farmers.";
     }
-    // ---- END OF NEW LOGIC ----
+
+    // In GoogleAuthPage.jsx
 
     const handleGoogleLogin = () => {
+        // This part is correct and gets the role
+        const params = new URLSearchParams(location.search);
+        const role = params.get('role');
+
+        // This is the default page if something goes wrong
+        let successUrl = 'https://farsoc.netlify.app/';
+
+        // --- THIS IS THE LOGIC THAT MUST BE FIXED ---
+        // Please make sure your code matches this logic EXACTLY.
+
+        if (role === 'farmer') {
+            // When role is 'farmer', go to the farmer DASHBOARD.
+            successUrl = 'https://farsoc.netlify.app/farmers/dashboard';
+        } else if (role === 'buyer') {
+            // When role is 'buyer', go to the farmer LIST.
+            successUrl = 'https://farsoc.netlify.app/farmer-list';
+        }
+
+        // This part starts the login with the correct URL from above
         try {
             account.createOAuth2Session(
                 'google',
-                'https://farsoc.netlify.app/farmers',
+                successUrl,
                 'https://farsoc.netlify.app/auth'
             );
         } catch (error) {
@@ -44,7 +62,6 @@ function GoogleAuthPage() {
         <div className="auth-page-container">
             <div className="auth-box">
                 <h1 className="auth-title">Welcome to Farsoc</h1>
-                {/* USE THE NEW SUBTITLE VARIABLE HERE */}
                 <p className="auth-subtitle">{subtitle}</p>
                 <button onClick={handleGoogleLogin} className="google-auth-button">
                     <GoogleIcon />
