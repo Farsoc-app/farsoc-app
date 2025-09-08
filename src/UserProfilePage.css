@@ -28,7 +28,7 @@
   border: 1px solid #ddd;
   box-sizing: border-box;
   font-size: 1rem;
-  background-color: #f1f1f1; /* Grey out the fields to show they aren't editable yet */
+  background-color: #f1f1f1; 
   cursor: not-allowed;
 }
 
@@ -39,13 +39,12 @@
   gap: 0.75rem;
 }
 
-/* This makes the Logout button red and outlined */
 .logout-button {
   width: 100%;
   padding: 14px;
   border-radius: 8px;
-  border: 1px solid #d32f2f; /* Red border */
-  color: #d32f2f; /* Red text */
+  border: 1px solid #d32f2f; 
+  color: #d32f2f; 
   background-color: transparent;
   font-size: 1rem;
   font-weight: 500;
@@ -64,7 +63,7 @@
   padding: 14px;
   border-radius: 8px;
   border: none;
-  background-color: #8D5B2D; /* Main brown color */
+  background-color: #8D5B2D; 
   color: white;
   font-size: 1rem;
   font-weight: 500;
@@ -74,5 +73,5 @@
 }
 
 .submit-button:hover {
-  background-color: #7a4f27; /* A slightly darker brown for hover */
+  background-color: #7a4f27; 
 }
