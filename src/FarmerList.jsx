@@ -9,9 +9,10 @@ function FarmerList({ farmers }) {
         const promptFlag = sessionStorage.getItem('showProfilePrompt');
         if (promptFlag) {
             setShowPrompt(true);
-            sessionStorage.removeItem('showProfilePrompt'); // Remove flag after showing
+            sessionStorage.removeItem('showProfilePrompt');
         }
     }, []);
+
     return (
         <div className="farmer-list-container">
             {showPrompt && (
@@ -58,7 +59,7 @@ function FarmerList({ farmers }) {
                                 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480 576q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160 896v-80q0-54 26-97t70-65q106-53 224-53s224 20 224 53q44 22 70 65t26 97v80H160Z" /></svg>
                             </div>
                             <div className="farmer-details">
-                                <h2>{farmer.name}</h2>
+                                <h2>{farmer?.name}</h2>
                                 <p className="location">{farmer.location}</p>
                                 <p className="rating">★ {farmer.rating}</p>
                                 <p className="farming-type">{farmer.farmingType}</p>
