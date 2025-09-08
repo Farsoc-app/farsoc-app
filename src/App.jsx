@@ -182,7 +182,7 @@ function App() {
       />
       <Route
         path="/farmers/:farmerId/agreement"
-        element={isAuth ? <AgreementForm /> : <Navigate to="/login" />}
+        element={isAuth ? <AgreementForm farmers={farmers} /> : <Navigate to="/login" />}
       />
     </Routes>
   );
