@@ -57,9 +57,9 @@ const categoryData = {
 
 // --- DATA FOR STACKED BAR CHART (Team Earnings) ---
 const detailedTeamData = [
-  { name: 'Ramesh K.', earnings: { Vegetables: { total: 50000, items: [{ name: 'Tomatoes', value: 30000 }, { name: 'Potatoes', value: 20000 }] }, Grains: { total: 20000, items: [{ name: 'Basmati Rice', value: 20000 }] }, Fruits: { total: 0, items: [] }}},
-  { name: 'Priya S.', earnings: { Vegetables: { total: 35000, items: [{ name: 'Onions', value: 20000 }, { name: 'Carrots', value: 15000 }] }, Grains: { total: 0, items: [] }, Fruits: { total: 25000, items: [{ name: 'Mangoes', value: 25000 }] }}},
-  { name: 'Admin Farm', earnings: { Vegetables: { total: 60000, items: [{ name: 'Spinach', value: 25000 }, { name: 'Cabbage', value: 35000 }] }, Grains: { total: 10000, items: [{ name: 'Wheat', value: 10000 }] }, Fruits: { total: 5000, items: [{ name: 'Bananas', value: 5000 }] }}},
+  { name: 'Farmer 1 (Admin)', earnings: { Vegetables: { total: 50000, items: [{ name: 'Tomatoes', value: 30000 }, { name: 'Potatoes', value: 20000 }] }, Grains: { total: 20000, items: [{ name: 'Basmati Rice', value: 20000 }] }, Fruits: { total: 0, items: [] }}},
+  { name: 'Farmer 2', earnings: { Vegetables: { total: 35000, items: [{ name: 'Onions', value: 20000 }, { name: 'Carrots', value: 15000 }] }, Grains: { total: 0, items: [] }, Fruits: { total: 25000, items: [{ name: 'Mangoes', value: 25000 }] }}},
+  { name: 'Farmer 3', earnings: { Vegetables: { total: 60000, items: [{ name: 'Spinach', value: 25000 }, { name: 'Cabbage', value: 35000 }] }, Grains: { total: 10000, items: [{ name: 'Wheat', value: 10000 }] }, Fruits: { total: 5000, items: [{ name: 'Bananas', value: 5000 }] }}},
 ];
 const teamLabels = detailedTeamData.map(f => f.name);
 const categories = ['Vegetables', 'Grains', 'Fruits'];
