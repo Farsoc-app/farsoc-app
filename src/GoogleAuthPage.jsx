@@ -15,7 +15,7 @@ const GoogleIcon = () => (
 function GoogleAuthPage() {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
-    const role = params.get('role'); // This will be 'farmer', 'buyer', or null
+    const role = params.get('role');
 
     let subtitle = "Please continue to get started.";
     if (role === 'farmer') {
@@ -24,28 +24,20 @@ function GoogleAuthPage() {
         subtitle = "Please continue to connect with farmers.";
     }
 
-    // In GoogleAuthPage.jsx
 
     const handleGoogleLogin = () => {
-        // This part is correct and gets the role
         const params = new URLSearchParams(location.search);
         const role = params.get('role');
 
-        // This is the default page if something goes wrong
-        let successUrl = 'https://farsoc.netlify.app/';
-
-        // --- THIS IS THE LOGIC THAT MUST BE FIXED ---
-        // Please make sure your code matches this logic EXACTLY.
+        const origin = window.location.origin;
+        let successUrl = `${origin}/`;
 
         if (role === 'farmer') {
-            // When role is 'farmer', go to the farmer DASHBOARD.
-            successUrl = 'https://farsoc.netlify.app/farmers/dashboard';
+            successUrl = `${origin}/farmers/dashboard`;
         } else if (role === 'buyer') {
-            // When role is 'buyer', go to the farmer LIST.
-            successUrl = 'https://farsoc.netlify.app/farmer-list';
+            successUrl = `${origin}/farmers/list`;
         }
 
-        // This part starts the login with the correct URL from above
         try {
             account.createOAuth2Session(
                 'google',
