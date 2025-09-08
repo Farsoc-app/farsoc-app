@@ -54,15 +54,15 @@ function UserProfilePage() {
                         <>
                             <div className="form-group">
                                 <label>Name</label>
-                                <input type="text" value={userData.name} readOnly />
+                                <input type="text" value={userData?.name} readOnly />
                             </div>
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" value={userData.email} readOnly />
+                                <input type="email" value={userData?.email} readOnly />
                             </div>
                             <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" value={userData.phone} readOnly />
+                                <input type="text" value={userData?.phone} readOnly />
                             </div>
                         </>
                     )}
