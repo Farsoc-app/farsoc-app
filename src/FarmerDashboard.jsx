@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './FarmerDashboard.css';
+import PerformanceInsightsCard from './PerformanceInsightsCard';
 
 function FarmerDashboard() {
     // We are using hardcoded data for now.
@@ -73,27 +74,13 @@ function FarmerDashboard() {
                 <span className="produce-card-arrow">&rarr;</span>
             </Link>
 
-            {/* Weekly Earnings Chart */}
-            <div className="earnings-card">
-                <h3>Weekly Earnings</h3>
-                <div className="chart-area">
-                    {/* We will map over some data to create the bars */}
-                    {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => {
-                        // Placeholder earnings data
-                        const earnings = [60, 80, 100, 85, 110, 50, 30];
-                        const maxEarning = 120;
-                        const barHeight = (earnings[index] / maxEarning) * 100;
-
-                        return (
-                            <div key={day} className="day-container">
-                                <div className="bar" style={{ height: `${barHeight}%` }}></div>
-                                <span className="day-label">{day}</span>
-                            </div>
-                        );
-                    })}
-                </div>
-                <p className="total-earnings">Total: ₹xxxxx</p>
-            </div>
+            {/* =============================================== */}
+            {/* ===== START: NEW PERFORMANCE INSIGHTS CARD ===== */}
+            {/* =============================================== */}
+            <PerformanceInsightsCard />
+            {/* =============================================== */}
+            {/* ====== END: NEW PERFORMANCE INSIGHTS CARD ====== */}
+            {/* =============================================== */}
         </div>
     );
 }
