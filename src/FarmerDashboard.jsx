@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './FarmerDashboard.css'; 
 
-function FarmerDashboard({ user }) {
+function FarmerDashboard() {
     // We are using hardcoded data for now.
     // Later, we will fetch this from Appwrite.
+    const farmerName = "A farmer";
     const activeAgreements = 2;
     const agreementRequests = 1;
 
@@ -19,7 +20,7 @@ function FarmerDashboard({ user }) {
                 </Link>
             </header>
 
-            <p className="welcome-message">Welcome back, {user.name}</p>
+            <p className="welcome-message">Welcome back, {farmerName}</p>
 
             <div className="info-card-grid">
                 <div className="info-card agreements">
