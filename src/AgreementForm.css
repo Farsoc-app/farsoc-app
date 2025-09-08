@@ -1,25 +1,20 @@
-/* --- Main Page Layout --- */
 .agreement-page {
-  /* This centers the form card on the page */
   display: flex;
   justify-content: center;
-  padding: 4rem 20px; /* Adds space at the top/bottom and sides */
+  padding: 4rem 20px; 
 }
 
 .agreement-form-container {
-  /* This is the main white card */
   background-color: white;
   padding: 2rem 2.5rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 400px; /* A bit wider for a detailed form */
+  max-width: 400px;
 }
 
 
-/* --- General Form Structure --- */
 .form-section {
-  /* Use this class on divs that group a part of the form, like "Society Info" */
   margin-bottom: 2.5rem;
 }
 
@@ -33,16 +28,13 @@
 }
 
 
-/* --- Input Fields and Labels --- */
 .input-grid {
-  /* A container for laying out multiple inputs side-by-side */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
 .form-group {
-  /* A container for a single label and its input */
   display: flex;
   flex-direction: column;
 }
@@ -62,7 +54,6 @@
 }
 
 
-/* --- Buttons --- */
 .duration-buttons {
   display: flex;
   gap: 1rem;
