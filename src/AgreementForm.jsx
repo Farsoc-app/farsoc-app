@@ -2,22 +2,18 @@ import { useParams, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react'; 
 import './AgreementForm.css';
 
-// We pass the farmer's data into this component to get the available durations
-function AgreementForm({ farmers }) { // <-- Note: 'farmers' (plural), not 'farmer'
+function AgreementForm({ farmers }) { 
     const { farmerId } = useParams();
-    const navigate = useNavigate(); // We'll use this for the back button
+    const navigate = useNavigate(); 
     const [selectedDuration, setSelectedDuration] = useState(null);
 
-    // Find the specific farmer from the array using the ID from the URL
     const farmer = farmers.find(f => f.id == farmerId);
 
-    // A placeholder for the user's info.
     const societyInfo = {
         name: "Green Valley Society",
         deliveryLocation: "Guwahati, Assam",
     };
 
-    // If the farmer data hasn't loaded yet, show a loading message
     if (!farmer) {
         return <div>Loading farmer details...</div>;
     }
@@ -28,21 +24,21 @@ function AgreementForm({ farmers }) { // <-- Note: 'farmers' (plural), not 'farm
 
                 <div className="agreement-form">
                     <div className="form-section">
-                        <h3 className="form-section-title">Agreement with {farmer.name}</h3>
+                        <h3 className="form-section-title">Agreement with {farmer?.name}</h3>
                         <p className="farmer-location-subtitle">{farmer.location}</p>
                     </div>
 
                     <div className="form-section">
                         <h3 className="form-section-title">Society Information</h3>
 
-                        <div className="input-grid">  {/* <-- 1. Add this main grid container */}
+                        <div className="input-grid">  
 
-                            <div className="form-group">  {/* <-- 2. Wrap each field in a group */}
+                            <div className="form-group"> 
                                 <label>Society Name *</label>
                                 <input
                                     name="societyName"
                                     type="text"
-                                    value="Green Valley Society" /* This will come from state later */
+                                    value="Green Valley Society" 
                                 />
                             </div>
 
@@ -51,7 +47,7 @@ function AgreementForm({ farmers }) { // <-- Note: 'farmers' (plural), not 'farm
                                 <input
                                     name="deliveryLocation"
                                     type="text"
-                                    value="Guwahati, Assam" /* This will come from state later */
+                                    value="Guwahati, Assam" 
                                 />
                             </div>
 
