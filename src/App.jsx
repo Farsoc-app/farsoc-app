@@ -170,7 +170,7 @@ function App() {
       />
       <Route
         path="/farmers/:farmerId"
-        element={isAuth ? <FarmerDetail /> : <Navigate to="/login" />}
+        element={isAuth ? <FarmerDetail farmers={farmers} /> : <Navigate to="/login" />}
       />
       <Route
         path="/profile"
