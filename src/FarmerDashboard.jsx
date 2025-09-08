@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './FarmerDashboard.css'; 
+import './FarmerDashboard.css';
 
 function FarmerDashboard() {
     // We are using hardcoded data for now.
@@ -54,6 +54,14 @@ function FarmerDashboard() {
                         <span>📝</span>
                         <span>All Agreements</span>
                     </Link>
+                    <Link to="/inquiries" className="action-card">
+                        <span>💬</span>
+                        <span>Inquiries</span>
+                    </Link>
+                    <Link to="/finances" className="action-card">
+                        <span>₹</span>
+                        <span>My Finances</span>
+                    </Link>
                 </div>
             </div>
 
@@ -73,7 +81,7 @@ function FarmerDashboard() {
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => {
                         // Placeholder earnings data
                         const earnings = [60, 80, 100, 85, 110, 50, 30];
-                        const maxEarning = 120; 
+                        const maxEarning = 120;
                         const barHeight = (earnings[index] / maxEarning) * 100;
 
                         return (
