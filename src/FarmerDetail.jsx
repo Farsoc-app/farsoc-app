@@ -44,7 +44,7 @@ function FarmerDetail({ farmers }) {
                         <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 96 960 960" width="32"><path d="M480 576q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160 896v-80q0-54 26-97t70-65q106-53 224-53s224 20 224 53q44 22 70 65t26 97v80H160Z" /></svg>
                     </div>
                     <div className="info-text">
-                        <h2>{farmer.name}</h2>
+                        <h2>{farmer?.name}</h2>
                         <p className="location">{farmer.location}</p>
                     </div>
                 </div>
@@ -123,8 +123,8 @@ function FarmerDetail({ farmers }) {
                             <div className="produce-grid">
                                 {/* Loop over the items within that specific category */}
                                 {farmer.produce[category].map((item) => (
-                                    <div key={item.name} className="produce-item">
-                                        <span className="produce-name">{item.name}</span>
+                                    <div key={item?.name} className="produce-item">
+                                        <span className="produce-name">{item?.name}</span>
                                         <span className="produce-price">
                                             ₹{item.price} / {item.unit || 'kg'}
                                         </span>
