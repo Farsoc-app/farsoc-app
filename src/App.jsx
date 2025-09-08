@@ -34,7 +34,7 @@ function App() {
     checkUserSession();
   }, []);
 
-  const farmers = [
+  const [farmers] = useState([
     {
       id: 1,
       name: 'A Farmers Group',
@@ -118,7 +118,7 @@ function App() {
         }
       ]
     }
-  ];
+  ]);
 
   if (isLoading) {
     return (
@@ -128,10 +128,11 @@ function App() {
     );
   }
 
+  const isAuth = !!user;
+
   return (
     <Routes>
-      {/* --- Public Routes --- */}
-      <Route path="/" element={!user ? (
+      <Route path="/" element={
         <div className="welcome-container">
           <div className="logo-container">
             <img src={farsocLogo} alt="Farsoc company logo" className="logo-emoji" />
@@ -141,12 +142,12 @@ function App() {
             Connecting farmers directly with housing societies for fresh, bulk produce.
           </p>
           <div className="role-selection">
-            <Link to="/auth?role=farmer" className="role-button farmer-btn">
+            <Link to="/login?role=farmer" className="role-button farmer-btn">
               <FarmerIcon className="role-icon" />
               <span className="role-title">I am a Farmer</span>
               <span className="role-subtitle">Sell your produce directly</span>
             </Link>
-            <Link to="/auth?role=buyer" className="role-button society-btn">
+            <Link to="/login?role=buyer" className="role-button society-btn">
               <SocietyIcon className="role-icon" />
               <span className="role-title">I am a Buyer/Society</span>
               <span className="role-subtitle highlighted">Source fresh produce in bulk</span>
@@ -156,30 +157,33 @@ function App() {
             Join thousands of farmers and societies building sustainable food networks.
           </p>
         </div>
-      ) : (
-        <Navigate to={user.prefs.role === 'farmer' ? '/farmers/dashboard' : (user.prefs.role === 'buyer' ? '/farmer-list' : '/')} />
-      )} />
+      } />
+      <Route path="/login" element={<GoogleAuthPage />} />
 
-      {/* The Google Auth Page */}
-      <Route
-        path="/auth"
-        element={!user ? <GoogleAuthPage /> : <Navigate to="/" />}
-      />
-
-      {/* Farmer's Dashboard */}
       <Route
         path="/farmers/dashboard"
-        element={user && user.prefs.role === 'farmer' ? <FarmerDashboard user={user} /> : <Navigate to="/" />}
+        element={isAuth ? <FarmerDashboard /> : <Navigate to="/login" />}
       />
-
-      {/* Buyer's Page (Farmer List) */}
       <Route
-        path="/farmer-list"
-        element={user && user.prefs.role === 'buyer' ? <FarmerList user={user} /> : <Navigate to="/" />}
+        path="/farmers/list"
+        element={isAuth ? <FarmerList farmers={farmers} /> : <Navigate to="/login" />}
       />
-
-      {/* Fallback for any other URL - redirects to home */}
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route
+        path="/farmers/:farmerId"
+        element={isAuth ? <FarmerDetail /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/profile"
+        element={isAuth ? <UserProfilePage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/signup/farmer"
+        element={isAuth ? <FarmerSignupPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/farmers/:farmerId/agreement"
+        element={isAuth ? <AgreementForm /> : <Navigate to="/login" />}
+      />
     </Routes>
   );
 }
